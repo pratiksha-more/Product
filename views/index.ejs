@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <a href=""></a>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.Tgop-8oVQ4fwkdprIgAw4QAAAA&pid=Api&P=0&h=180" alt="logo">
+
+            <div class="nav-item">
+                <ul>
+                    <li class="nav-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/addproduct">AddProduct</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/products">Products</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <form action="/search" method="get">
+                    <input type="search" placeholder="Enter Product Name">
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <% allProducts.map(product=> { %>
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/200x200" alt="Product_image" class="product-card"
+                        id="news-img" />
+                </div>
+                <div class="products-card">
+                    <h3 class="product-card">
+                        <a href="/products/<%= product._id %>">
+                            <%= product.title %>
+                        </a>
+                    </h3>
+
+                    <p class="product-content">
+                        <%= product.content.substring(0, 50) %>...
+                    </p>
+
+                    <h6 class="product-price">Price: $
+                        <%= product.price %>
+                    </h6>
+
+                    <p>Created on:
+                        <%= product.createdAt.toDateString() %>
+                    </p>
+                </div>
+            </div>
+            <% }) %>
+    </main>
+</body>
+
+
+
+
+
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: aqua;
+        font-family: 'Courier New', Courier, monospace;
+        box-sizing: border-box;
+        padding: 0 20px;
+
+
+    }
+
+    nav {
+        position: fixed;
+        background: rgba(41, 0, 128, 0.3);
+        box-shadow: 0 0 10px gray;
+        top: 0;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        align-items: center;
+    }
+
+    main {
+        /* margin-top: 80px;
+        padding: 20px;
+        display: flex;
+        justify-content: center; */
+
+
+        padding-block: 20px;
+        margin-top: 100px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav img {
+        width: 70px;
+        height: 50px;
+    }
+
+    .nav-item ul {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-item ul li {
+        display: inline;
+    }
+
+    .nav-item ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 5px 10px;
+        background-color: rgba(41, 0, 128, 0.8);
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-item ul li a:hover {
+        background-color: rgba(41, 0, 128, 1);
+    }
+
+    .search {
+        display: flex;
+        gap: 10px;
+    }
+
+    .search input[type="search"] {
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .search button {
+        padding: 5px 10px;
+        background-color: rgba(41, 0, 128, 0.8);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+
+    }
+
+    button:hover {
+        background-color: rgba(41, 0, 128, 1);
+    }
+
+    .card {
+        width: 300px;
+        margin: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .product-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .product-title a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .product-title a:hover {
+        color: #007BFF;
+
+    }
+
+    .product-price {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .product-desc {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .products-card {
+
+        padding: 10px;
+        background-color: wheat;
+    }
+
+    .product-content {
+        font-weight: bolder;
+    }
+
+
+    .nav-item ul li a {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-item ul li a:hover {
+        transform: scale(1.1);
+    }
+</style>

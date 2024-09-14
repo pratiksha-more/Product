@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav>
+        <a href=""></a>
+        <!-- <img src="https://tse3.mm.bing.net/th?id=OIP.Tgop-8oVQ4fwkdprIgAw4QAAAA&pid=Api&P=0&h=180" alt="logo"> -->
+
+        <div class="nav-item">
+            <ul>
+                <li class="nav-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/addproduct">AddProduct</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/products">Products</a>
+                </li>
+            </ul>
+        </div>
+        <div class="search">
+            <form action="/search" method="get">
+                <input type="search" placeholder="Enter Product Name">
+                <button type="submit" id="search-button">Search</button>
+            </form>
+
+        </div>
+    </nav>
+
+
+
+
+    <% allProducts.forEach(product=> { %>
+        <div class="record">
+            <h1>
+                <%= product.title %>
+            </h1>
+            <p>
+                <%= product.content %>
+            </p>
+            <p>Price: $<%= product.price %>
+            </p>
+            <a href="/delete/<%= product._id %>">Delete</a>
+            <a href="/addproduct?id=<%= product._id %>">Edit</a>
+        </div>
+        <% }) %>
+
+</body>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Times New Roman", Times, serif;
+        padding-top: 70px;
+    }
+
+    p {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        max-width: 1180px;
+        margin-inline: auto;
+        overflow: hidden;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+    }
+
+    nav {
+        position: fixed;
+        background: rgba(41, 0, 128, 0.3);
+        box-shadow: 0 0 10px gray;
+        top: 0;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .nav-item ul {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-item ul li {
+        display: inline;
+    }
+
+    .nav-item ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 5px 10px;
+        background-color: rgba(41, 0, 128, 0.8);
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-item ul li a:hover {
+        background-color: rgba(41, 0, 128, 1);
+    }
+
+    .search {
+
+        display: flex;
+        gap: 10px;
+    }
+
+    .search input[type="search"] {
+        padding: 5px;
+        font-size: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+
+    }
+
+    .search button {
+        padding: 5px 10px;
+        background-color: rgba(41, 0, 128, 0.8);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .search button:hover {
+        background-color: rgba(41, 0, 128, 1);
+    }
+
+
+    .record {
+        display: flex;
+        gap: 20px;
+        background-color: rgba(137, 43, 226, 0.137);
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px gray;
+    }
+
+    .main {
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .item1 ul {
+        gap: 20px;
+        font-weight: bold;
+    }
+
+    .nav-item:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    .item2 input {
+        width: 20vw;
+        height: 4vh;
+        padding: 2px;
+        border-radius: 5px;
+        margin-right: 10px;
+        border: none;
+    }
+
+    .item2 button {
+        background-color: rgba(0, 42, 255, 0.295);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .item2 button:hover {
+        background-color: rgba(0, 0, 255, 0.964);
+    }
+
+    .form {
+        width: 500px;
+        padding: 30px;
+        margin: 20px auto;
+        background-color: rgba(137, 43, 226, 0.137);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px gray;
+    }
+
+    .form textarea,
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .form label {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .form textarea {
+        height: 100px;
+    }
+
+    .form button {
+        width: 100px;
+        padding: 7px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: green;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        margin: auto;
+    }
+
+    .form button:hover {
+        background-color: rgb(0, 111, 128);
+    }
+
+    .record h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .record a {
+        margin: 10px;
+        padding: 8px 12px;
+        text-decoration: none;
+        color: white;
+        background-color: #00796b;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .record a:hover {
+        background-color: #004d40;
+    }
+</style>
+
+</html>
